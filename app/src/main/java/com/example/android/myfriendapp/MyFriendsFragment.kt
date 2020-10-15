@@ -12,16 +12,17 @@ import kotlinx.android.synthetic.*
 import kotlinx.android.synthetic.main.my_friends_fragment.*
 
 class MyFriendsFragment : Fragment() {
+
+    private var listTeman: List<MyFriend>? = null
+    private var db: AppDatabase? = null
+    private var myFriendDao: MyFriendDao? = null
+
     companion object {
         fun newInstance(): MyFriendsFragment {
             return MyFriendsFragment()
         }
     }
 
-    private var listTeman: List<MyFriend>? = null
-
-    private var db: AppDatabase? = null
-    private var myFriendDao: MyFriendDao? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -33,6 +34,8 @@ class MyFriendsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+
         initLocalDB()
         initView()
     }
@@ -46,6 +49,10 @@ class MyFriendsFragment : Fragment() {
         fabAddFriend.setOnClickListener {
             (activity as MainActivity).tampilMyFriendsAddFragment()
         }
+        fabAddFriend.setOnClickListener {
+            (activity as MainActivity).tampilMyFriendsAddFragment()
+        }
+
         ambilDataTeman()
     }
 
@@ -53,7 +60,7 @@ class MyFriendsFragment : Fragment() {
 
         listTeman = ArrayList()
         myFriendDao?.ambilSemuaTeman()?.observe(this, Observer { r ->
-            listTeman = r
+            listTeman = r as MutableList<MyFriend>?
 
             when {
                 listTeman?.size == 0 -> tampilToast("Belum ada data teman")
@@ -71,7 +78,7 @@ class MyFriendsFragment : Fragment() {
 
     private fun tampilTeman() {
         listMyFriend.layoutManager = LinearLayoutManager(activity)
-        listMyFriend.adapter = MyFriendAdapter(activity!!, listTeman!!)
+        listMyFriend.adapter = MyFriendAdapter(activity!!, (listTeman as ArrayList<MyFriend>?)!!)
     }
 
 

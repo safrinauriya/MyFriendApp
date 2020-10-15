@@ -14,7 +14,6 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 
 class MyFriendsAddFragment : Fragment() {
-
     companion object {
         fun newInstance(): MyFriendsAddFragment {
             return MyFriendsAddFragment()
@@ -26,6 +25,9 @@ class MyFriendsAddFragment : Fragment() {
     private var telpInput: String = ""
     private var alamatInput: String = ""
     private var genderInput: String = ""
+
+    private var db: AppDatabase? = null
+    private var myFriendDao: MyFriendDao? = null
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -41,17 +43,18 @@ class MyFriendsAddFragment : Fragment() {
         initView()
     }
 
-    private fun initLocalDB() {
-        db = AppDatabase.getAppDataBase((activity!!))
-        myFriendDao = db.myFriendDao()
-    }
-
     private fun initView() {
         btnSave.setOnClickListener {
             validasiInput()
         }
         setDataSpinnerGener()
     }
+
+    private fun initLocalDB() {
+        db = AppDatabase.getAppDataBase(activity!!)
+        myFriendDao = db?.myFriendDao()
+    }
+
 
     private fun setDataSpinnerGener() {
         val adapter = ArrayAdapter.createFromResource(
@@ -94,7 +97,7 @@ class MyFriendsAddFragment : Fragment() {
     private fun tambahDataTeman(teman: MyFriend): Job {
 
         return GlobalScope.launch {
-            myFriendDao.tambahTeman(teman)
+            myFriendDao?.tambahTeman(teman)
             (activity as MainActivity).tampilMyFriendsFragment()
         }
     }
