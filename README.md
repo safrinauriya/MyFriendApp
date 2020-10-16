@@ -19,14 +19,18 @@ Fragment biasanya dibuat sebagai bagian dari suatu antarmuka. Sebuah fragment ha
 
 ## Tampilan awal belum ada data yang dimasukkan
 Pada tampilan awal, masih belum ada data yang tersimpan maka hanya terdapat halaman kosong, untuk menambahkan data teman klik tombol "+" pada pojok kanan bawah. 
+
 ![Screenshot_20201016-200434_MyFriendApp](https://user-images.githubusercontent.com/60589670/96273894-14321800-0ffa-11eb-8050-1b8b2f231d91.jpg)
 ## Tampilan form pengisian data teman 
 Setelah menekan tombol "+", maka akan terdapat tampilan form untuk menambahkan teman. Jika data telah diisi seluruhnya tekan simpan.
+
 ![Screenshot_20201016-200915_MyFriendApp](https://user-images.githubusercontent.com/60589670/96273951-23b16100-0ffa-11eb-884d-fc59bac66b71.jpg)
 ## Tampilan peringatan jika form kosong 
 Jika terdapat format yang kosong, maka akan muncul peringatan pada format yang belum terisi. Data berhasil tersimpan jika form terisi seluruhnya.
+
 ![Screenshot_20201016-201408_MyFriendApp](https://user-images.githubusercontent.com/60589670/96274149-66733900-0ffa-11eb-81a4-8cc26e970a53.jpg)
-##Tampilan list data teman 
+## Tampilan list data teman 
 Setelah menekan tombol simpan, jika data berhasil tersimpan maka akan muncul list data yang baru ditambahkan.
+
 ![Screenshot_20201016-201352_MyFriendApp](https://user-images.githubusercontent.com/60589670/96274446-b18d4c00-0ffa-11eb-809c-54668e033af2.jpg)
 Terima kasih:)))
